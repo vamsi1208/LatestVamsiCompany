@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AWS Learning Journey - Detailed Notes</title>
+<style>
+body {font-family: Arial, sans-serif; margin: 30px; line-height: 1.6;}
+h1,h2 {color:#232F3E;}
+details {margin:10px 0; border:1px solid #ccc; padding:10px; border-radius:6px;}
+summary {font-weight:bold; cursor:pointer;}
+code, pre {background:#f4f4f4; padding:2px 4px;}
+pre {padding:10px; overflow:auto;}
+</style>
+</head>
+<body>
+
+<h1>AWS Learning Journey - Detailed Revision Notes</h1>
+
+<p>Prepared as a revision guide for future AWS, Bedrock, S3 and GitHub Actions learning.</p>
+
+<h2>Overall Progress</h2>
+<ul>
+<li>AWS Account Created</li>
+<li>$100 AWS Credits Available</li>
+<li>IAM User Created</li>
+<li>AWS CLI Installed</li>
+<li>AWS CLI Configured</li>
+<li>S3 Bucket Accessed via CLI</li>
+<li>First File Uploaded Successfully</li>
+<li>Bedrock Catalog Explored</li>
+</ul>
+
+<details open>
+<summary>Step 1 - AWS Account Creation</summary>
+<p>You created an AWS account and received AWS credits.</p>
+<p>Key concepts:</p>
+<ul>
+<li>Root User = Account owner.</li>
+<li>Root user should not be used for daily development.</li>
+<li>Use IAM users for development activities.</li>
+</ul>
+</details>
+
+<details>
+<summary>Step 2 - Understanding Regions</summary>
+<p>AWS resources exist in Regions.</p>
+<ul>
+<li>us-east-1 = Virginia</li>
+<li>us-west-2 = Oregon</li>
+<li>ap-southeast-2 = Sydney</li>
+<li>ap-south-2 = Hyderabad</li>
+</ul>
+<p>For Bedrock learning we selected <b>us-east-1</b>.</p>
+</details>
+
+<details>
+<summary>Step 3 - IAM User Creation</summary>
+<p>Created IAM user:</p>
+<pre>vamsi-dev</pre>
+
+<p>Permission granted:</p>
+<pre>AdministratorAccess</pre>
+
+<p>Why?</p>
+<ul>
+<li>Simplifies learning.</li>
+<li>Avoids permission issues.</li>
+<li>Later move to least privilege model.</li>
+</ul>
+</details>
+
+<details>
+<summary>Step 4 - Access Key Creation</summary>
+<p>Created:</p>
+<ul>
+<li>Access Key ID</li>
+<li>Secret Access Key</li>
+</ul>
+
+<p>Purpose:</p>
+<pre>
+VS Code
+  ↓
+AWS CLI
+  ↓
+AWS APIs
+</pre>
+
+<p>Security Rule:</p>
+<ul>
+<li>Never commit keys to GitHub.</li>
+<li>Rotate exposed keys.</li>
+<li>Store secrets securely.</li>
+</ul>
+</details>
+
+<details>
+<summary>Step 5 - AWS CLI Installation</summary>
+<p>Verified installation:</p>
+<pre>aws --version</pre>
+
+<p>Observed:</p>
+<pre>aws-cli/2.35.3 Windows/11 AMD64</pre>
+</details>
+
+<details>
+<summary>Step 6 - AWS CLI Configuration</summary>
+<p>Executed:</p>
+<pre>aws configure</pre>
+
+<p>Entered:</p>
+<pre>
+Access Key ID
+Secret Access Key
+Region = us-east-1
+Output = json
+</pre>
+
+<p>Files created automatically:</p>
+<pre>
+~/.aws/credentials
+~/.aws/config
+</pre>
+</details>
+
+<details>
+<summary>Step 7 - Identity Verification</summary>
+<p>Executed:</p>
+<pre>aws sts get-caller-identity</pre>
+
+<p>Purpose:</p>
+<pre>
+Who am I?
+Which account am I connected to?
+Which IAM user is active?
+</pre>
+
+<p>Verified IAM user:</p>
+<pre>vamsi-dev</pre>
+</details>
+
+<details>
+<summary>Step 8 - S3 Fundamentals</summary>
+<p>S3 = Simple Storage Service.</p>
+
+<p>Hierarchy:</p>
+<pre>
+AWS Account
+  ↓
+S3 Bucket
+  ↓
+Folders (optional)
+  ↓
+Objects (files)
+</pre>
+
+<p>Your bucket:</p>
+<pre>demo-bucket-397760697907-us-west-2-an</pre>
+</details>
+
+<details>
+<summary>Step 9 - First S3 Upload</summary>
+<p>Create file:</p>
+<pre>echo Hello AWS > test.txt</pre>
+
+<p>Upload:</p>
+<pre>
+aws s3 cp test.txt s3://demo-bucket-397760697907-us-west-2-an/
+</pre>
+
+<p>Result:</p>
+<ul>
+<li>test.txt successfully uploaded</li>
+<li>Visible in AWS Console</li>
+</ul>
+</details>
+
+<details>
+<summary>Useful S3 Commands</summary>
+<pre>
+aws s3 ls
+
+aws s3 ls s3://bucket-name/
+
+aws s3 cp test.txt s3://bucket-name/
+
+aws s3 cp s3://bucket-name/test.txt .
+
+aws s3 rm s3://bucket-name/test.txt
+
+aws s3 sync reports/ s3://bucket-name/reports/
+</pre>
+</details>
+
+<details>
+<summary>Bedrock Learning Notes</summary>
+<p>What is Bedrock?</p>
+<pre>
+Application
+   ↓
+Bedrock
+   ↓
+Claude / Nova / Llama
+</pre>
+
+<p>Observations:</p>
+<ul>
+<li>Model catalog accessible.</li>
+<li>Playground accessible.</li>
+<li>Quota currently unavailable.</li>
+<li>Received throttling exceptions.</li>
+</ul>
+
+<p>Likely cause:</p>
+<ul>
+<li>New account provisioning.</li>
+<li>Quota not yet assigned.</li>
+</ul>
+</details>
+
+<details>
+<summary>Future Bedrock Flow</summary>
+<pre>
+VS Code
+   ↓
+AWS SDK
+   ↓
+Bedrock Runtime
+   ↓
+Nova / Claude / Llama
+   ↓
+Response
+</pre>
+
+<p>Possible use cases:</p>
+<ul>
+<li>Generate Playwright tests</li>
+<li>Failure analysis</li>
+<li>Test case generation</li>
+<li>Gherkin to Playwright conversion</li>
+</ul>
+</details>
+
+<details>
+<summary>Recommended Next Learning Path</summary>
+<ol>
+<li>S3 Sync</li>
+<li>Lambda</li>
+<li>CloudWatch</li>
+<li>GitHub Actions + AWS</li>
+<li>Bedrock SDK</li>
+<li>Terraform</li>
+</ol>
+</details>
+
+<details>
+<summary>Practical Project for Quality Engineering</summary>
+<pre>
+Playwright Execution
+        ↓
+Generate HTML Report
+        ↓
+GitHub Actions
+        ↓
+AWS S3 Upload
+        ↓
+Share Report URL
+</pre>
+
+<p>Skills learned:</p>
+<ul>
+<li>Playwright</li>
+<li>GitHub Actions</li>
+<li>AWS CLI</li>
+<li>S3</li>
+<li>CI/CD</li>
+</ul>
+</details>
+
+</body>
+</html>

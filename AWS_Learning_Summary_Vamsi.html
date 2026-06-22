@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>AWS Learning Summary</title></head>
+<body style="font-family:Arial;margin:40px;">
+<h1>AWS Learning Summary</h1>
+<h2>Achievements</h2>
+<ul>
+<li>Created AWS account</li>
+<li>Created IAM user (vamsi-dev)</li>
+<li>Created Access Key and Secret Key</li>
+<li>Installed and configured AWS CLI</li>
+<li>Verified identity with aws sts get-caller-identity</li>
+<li>Uploaded a file to S3 using AWS CLI</li>
+</ul>
+
+<h2>Important Concepts</h2>
+<ul>
+<li>Root User = Account owner</li>
+<li>IAM User = Developer identity</li>
+<li>Access Key + Secret Key = Programmatic authentication</li>
+<li>AWS CLI = Command-line access to AWS</li>
+<li>S3 Bucket = Cloud storage container</li>
+<li>Region = AWS datacenter location</li>
+</ul>
+
+<h2>Commands Learned</h2>
+<pre>
+aws --version
+aws configure
+aws sts get-caller-identity
+aws s3 ls
+aws s3 ls s3://bucket-name/
+aws s3 cp test.txt s3://bucket-name/
+aws s3 cp s3://bucket-name/test.txt .
+aws s3 rm s3://bucket-name/test.txt
+</pre>
+
+<h2>Your Bucket</h2>
+<pre>demo-bucket-397760697907-us-west-2-an</pre>
+
+<h2>Bedrock Notes</h2>
+<ul>
+<li>Model catalog accessible</li>
+<li>Current quotas appear to be 0 TPM / 0 RPM</li>
+<li>Wait and recheck after account provisioning completes</li>
+<li>Use us-east-1 for Bedrock learning</li>
+</ul>
+
+<h2>Recommended Next Topics</h2>
+<ol>
+<li>S3 Sync</li>
+<li>Lambda</li>
+<li>CloudWatch</li>
+<li>GitHub Actions + AWS</li>
+<li>Bedrock</li>
+</ol>
+
+<h2>Security</h2>
+<p>Rotate the current access key because it was exposed in screenshots.</p>
+</body></html>
